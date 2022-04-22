@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let album of albums | filter: search">
+      <tr *ngFor="let album of albums | filter: search:page">
         <th scope="row">{{ album.userId }}</th>
         <th scope="row">{{ album.id }}</th>
         <td>{{ album.title }}</td>
@@ -34,4 +34,21 @@
       </tr>
     </tbody>
   </table>
+  <div *ngIf="(albums | filter: search:page).length === 0">
+    <p class="text-danger">no more results !</p>
+  </div>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+    <button class="btn btn-primary" type="button" (click)="backpage()">
+      Back
+    </button>
+    <button
+      class="btn btn-primary me-md-2"
+      type="button"
+      (click)="nextpage()"
+      [disabled]="(albums | filter: search:page).length === 0"
+    >
+      Next
+    </button>
+  </div>
 </div>

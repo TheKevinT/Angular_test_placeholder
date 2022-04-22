@@ -10,6 +10,7 @@ import { DataService } from '../services/services-data.service';
 export class ListComponent implements OnInit {
   public albums: DataI[];
   public search: string = '';
+  public page: number = 0;
   constructor(private dataService: DataService) {
     this.albums = [];
   }
@@ -22,6 +23,13 @@ export class ListComponent implements OnInit {
     this.dataService.getAllAlbums().subscribe((data) => (this.albums = data));
   }
   onSearch(search: string) {
+    this.page = 0;
     this.search = search;
+  }
+  nextpage() {
+    this.page += 10;
+  }
+  backpage() {
+    if (this.page > 0) this.page -= 10;
   }
 }
