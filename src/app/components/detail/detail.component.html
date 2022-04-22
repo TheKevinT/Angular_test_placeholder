@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="text-center">Detail</h1>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-warning" (click)="back()">Back</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">AlbumId</th>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">URL</th>
+        <th scope="col">thumbnailUrl</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of details">
+        <th scope="row">{{ detail.albumId }}</th>
+        <th scope="row">{{ detail.id }}</th>
+        <td>{{ detail.title }}</td>
+        <td>
+          <img [src]="detail.url" [ngStyle]="{ width: '75px' }" />
+        </td>
+        <td>
+          <img [src]="detail.thumbnailUrl" [ngStyle]="{ width: '75px' }" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

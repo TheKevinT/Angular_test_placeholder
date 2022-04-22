@@ -1,0 +1,37 @@
+<div class="container">
+  <h1 class="text-center">Album List</h1>
+
+  <input
+    type="text"
+    class="form-control mb-2"
+    placeholder="Search"
+    #txtSearch
+    (keyup)="onSearch(txtSearch.value)"
+  />
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">UserId</th>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let album of albums | filter: search">
+        <th scope="row">{{ album.userId }}</th>
+        <th scope="row">{{ album.id }}</th>
+        <td>{{ album.title }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-primary"
+            [routerLink]="['/detail/', album.id]"
+          >
+            Detail
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
